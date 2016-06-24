@@ -40,7 +40,7 @@ import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
-import org.eclipse.jface.dialogs.MessageDialog;
+//import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.jface.fieldassist.FieldDecorationRegistry;
@@ -65,7 +65,7 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.KeyEvent;
@@ -773,25 +773,26 @@ public class UIUtils {
 		RepositorySaveableFilter filter = new RepositorySaveableFilter(
 				repository);
 		boolean success = workbench.saveAll(window, window, filter, true);
-		if (success && cancelConfirmationQuestion != null && filter.isAnythingSaved()){
+		// if (success && cancelConfirmationQuestion != null &&
+		// filter.isAnythingSaved()){
 			// allow the user to cancel the operation to first do something with
 			// the newly saved files
-			String[] buttons = new String[] { IDialogConstants.YES_LABEL,
-					IDialogConstants.NO_LABEL };
-			MessageDialog dialog = new MessageDialog(window.getShell(),
-					UIText.CancelAfterSaveDialog_Title, null,
-					cancelConfirmationQuestion,
-					MessageDialog.QUESTION, buttons, 0) {
-				@Override
-				protected int getShellStyle() {
-					return (SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL
-							| SWT.SHEET | getDefaultOrientation());
-				}
-			};
-			int choice = dialog.open();
-			if (choice != 1) // user clicked "yes" or closed dialog -> cancel
-				return false;
-		}
+		// String[] buttons = new String[] { IDialogConstants.YES_LABEL,
+		// IDialogConstants.NO_LABEL };
+		// MessageDialog dialog = new MessageDialog(window.getShell(),
+		// UIText.CancelAfterSaveDialog_Title, null,
+		// cancelConfirmationQuestion,
+		// MessageDialog.QUESTION, buttons, 0) {
+		// @Override
+		// protected int getShellStyle() {
+		// return (SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL
+		// | SWT.SHEET | getDefaultOrientation());
+		// }
+		// };
+		// int choice = dialog.open();
+		// if (choice != 1) // user clicked "yes" or closed dialog -> cancel
+		// return false;
+		// }
 		return success;
 	}
 
@@ -824,13 +825,14 @@ public class UIUtils {
 	@Deprecated
 	public static void applyHyperlinkDetectorStyleRanges(
 			ITextViewer textViewer, IHyperlinkDetector[] hyperlinkDetectors) {
-		StyleRange[] styleRanges = getHyperlinkDetectorStyleRanges(textViewer,
-				hyperlinkDetectors);
-		StyledText styledText = textViewer.getTextWidget();
+		// StyleRange[] styleRanges =
+		// getHyperlinkDetectorStyleRanges(textViewer,
+		// hyperlinkDetectors);
+		// StyledText styledText = textViewer.getTextWidget();
 		// Apply hyperlink style ranges one by one. setStyleRange takes care to
 		// do the right thing in case they overlap with an existing style range.
-		for (StyleRange styleRange : styleRanges)
-			styledText.setStyleRange(styleRange);
+		// for (StyleRange styleRange : styleRanges)
+		// styledText.setStyleRange(styleRange);
 	}
 
 	/**

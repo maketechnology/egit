@@ -48,7 +48,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
-import org.eclipse.jface.text.ITextSelection;
+//import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.graphics.Image;
@@ -508,25 +508,25 @@ public class GitCompareFileRevisionEditorInput extends SaveableCompareEditorInpu
 
 	private class OpenWorkspaceVersionAction extends Action {
 
-		private final ISelectionProvider selectionProvider;
+		// private final ISelectionProvider selectionProvider;
 
 		private final File workspaceFile;
 
 		private OpenWorkspaceVersionAction(String text,
 				ISelectionProvider selectionProvider, File workspaceFile) {
 			super(text);
-			this.selectionProvider = selectionProvider;
+			// this.selectionProvider = selectionProvider;
 			this.workspaceFile = workspaceFile;
 		}
 
 		@Override
 		public void run() {
 			int selectedLine = 0;
-			if (selectionProvider.getSelection() instanceof ITextSelection) {
-				ITextSelection selection = (ITextSelection) selectionProvider
-						.getSelection();
-				selectedLine = selection.getStartLine();
-			}
+			// if (selectionProvider.getSelection() instanceof ITextSelection) {
+			// ITextSelection selection = (ITextSelection) selectionProvider
+			// .getSelection();
+			// selectedLine = selection.getStartLine();
+			// }
 
 			IWorkbenchWindow window = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow();

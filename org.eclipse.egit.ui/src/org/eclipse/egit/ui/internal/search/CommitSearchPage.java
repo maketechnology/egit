@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.egit.ui.internal.search;
 
-import java.io.BufferedReader;
+//import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.StringReader;
+//import java.io.StringReader;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -35,14 +35,14 @@ import org.eclipse.jface.fieldassist.ComboContentAdapter;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.resource.JFaceColors;
-import org.eclipse.jface.text.FindReplaceDocumentAdapter;
+//import org.eclipse.jface.text.FindReplaceDocumentAdapter;
 import org.eclipse.jface.text.FindReplaceDocumentAdapterContentProposalProvider;
-import org.eclipse.jface.text.ITextSelection;
+//import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.ICheckStateListener;
-import org.eclipse.jface.viewers.ISelection;
+//import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.search.ui.ISearchPage;
 import org.eclipse.search.ui.ISearchPageContainer;
 import org.eclipse.search.ui.ISearchQuery;
@@ -493,46 +493,46 @@ public class CommitSearchPage extends DialogPage implements ISearchPage {
 	}
 
 	private boolean initializePatternControl() {
-		ISelection selection = getSelection();
-		if (selection instanceof ITextSelection && !selection.isEmpty()) {
-			String text = ((ITextSelection) selection).getText();
-			if (text != null) {
-				if (isRegExButton.getSelection())
-					patternCombo.setText(FindReplaceDocumentAdapter
-							.escapeForRegExPattern(text));
-				else
-					patternCombo.setText(insertEscapeChars(text));
-
-				return true;
-			}
-		}
+		// ISelection selection = getSelection();
+		// if (selection instanceof ITextSelection && !selection.isEmpty()) {
+		// String text = ((ITextSelection) selection).getText();
+		// if (text != null) {
+		// if (isRegExButton.getSelection())
+		// patternCombo.setText(FindReplaceDocumentAdapter
+		// .escapeForRegExPattern(text));
+		// else
+		// patternCombo.setText(insertEscapeChars(text));
+		//
+		// return true;
+		// }
+		// }
 		return false;
 	}
 
-	private String insertEscapeChars(String text) {
-		if (text == null || text.length() == 0)
-			return ""; //$NON-NLS-1$
-		StringBuilder sbIn = new StringBuilder(text);
-		BufferedReader reader = new BufferedReader(new StringReader(text));
-		int lengthOfFirstLine = 0;
-		try {
-			String l = reader.readLine();
-			if (l != null)
-				lengthOfFirstLine = l.length();
-		} catch (IOException ex) {
-			return ""; //$NON-NLS-1$
-		}
-		StringBuilder sbOut = new StringBuilder(lengthOfFirstLine + 5);
-		int i = 0;
-		while (i < lengthOfFirstLine) {
-			char ch = sbIn.charAt(i);
-			if (ch == '*' || ch == '?' || ch == '\\')
-				sbOut.append('\\');
-			sbOut.append(ch);
-			i++;
-		}
-		return sbOut.toString();
-	}
+	// private String insertEscapeChars(String text) {
+	// if (text == null || text.length() == 0)
+	// return ""; //$NON-NLS-1$
+	// StringBuilder sbIn = new StringBuilder(text);
+	// BufferedReader reader = new BufferedReader(new StringReader(text));
+	// int lengthOfFirstLine = 0;
+	// try {
+	// String l = reader.readLine();
+	// if (l != null)
+	// lengthOfFirstLine = l.length();
+	// } catch (IOException ex) {
+	// return ""; //$NON-NLS-1$
+	// }
+	// StringBuilder sbOut = new StringBuilder(lengthOfFirstLine + 5);
+	// int i = 0;
+	// while (i < lengthOfFirstLine) {
+	// char ch = sbIn.charAt(i);
+	// if (ch == '*' || ch == '?' || ch == '\\')
+	// sbOut.append('\\');
+	// sbOut.append(ch);
+	// i++;
+	// }
+	// return sbOut.toString();
+	// }
 
 	/**
 	 * Sets the search page's container.
@@ -549,9 +549,9 @@ public class CommitSearchPage extends DialogPage implements ISearchPage {
 		return this.container;
 	}
 
-	private ISelection getSelection() {
-		return this.container.getSelection();
-	}
+	// private ISelection getSelection() {
+	// return this.container.getSelection();
+	// }
 
 	@Override
 	public void dispose() {

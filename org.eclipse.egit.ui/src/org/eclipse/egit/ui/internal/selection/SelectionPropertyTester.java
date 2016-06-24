@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.egit.core.AdapterUtils;
 import org.eclipse.egit.core.project.RepositoryMapping;
 import org.eclipse.egit.ui.internal.ResourcePropertyTester;
-import org.eclipse.jface.text.ITextSelection;
+//import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jgit.lib.Repository;
@@ -87,11 +87,11 @@ public class SelectionPropertyTester extends PropertyTester {
 
 	private static IStructuredSelection getStructuredSelection(
 			Collection<?> collection) {
-		Object firstElement = collection.iterator().next();
-		if (collection.size() == 1 && firstElement instanceof ITextSelection)
-			return SelectionUtils
-					.getStructuredSelection((ITextSelection) firstElement);
-		else
+		// Object firstElement = collection.iterator().next();
+		// if (collection.size() == 1 && firstElement instanceof ITextSelection)
+		// return SelectionUtils
+		// .getStructuredSelection((ITextSelection) firstElement);
+		// else
 			return new StructuredSelection(new ArrayList<>(collection));
 	}
 

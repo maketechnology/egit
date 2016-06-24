@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,13 +44,13 @@ import org.eclipse.egit.ui.internal.RepositoryCacheRule;
 import org.eclipse.egit.ui.internal.UIText;
 import org.eclipse.egit.ui.internal.credentials.EGitCredentialsProvider;
 import org.eclipse.egit.ui.internal.trace.GitTraceLocation;
-import org.eclipse.egit.ui.internal.variables.GitTemplateVariableResolver;
-import org.eclipse.jdt.internal.ui.JavaPlugin;
-import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.jface.resource.LocalResourceManager;
+//import org.eclipse.egit.ui.internal.variables.GitTemplateVariableResolver;
+//import org.eclipse.jdt.internal.ui.JavaPlugin;
+//import org.eclipse.jface.resource.JFaceResources;
+//import org.eclipse.jface.resource.LocalResourceManager;
 import org.eclipse.jface.resource.ResourceManager;
-import org.eclipse.jface.text.templates.ContextTypeRegistry;
-import org.eclipse.jface.text.templates.TemplateContextType;
+//import org.eclipse.jface.text.templates.ContextTypeRegistry;
+//import org.eclipse.jface.text.templates.TemplateContextType;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jgit.events.IndexChangedEvent;
@@ -296,8 +296,8 @@ public class Activator extends AbstractUIPlugin implements DebugOptionsListener 
 	@Override
 	public void start(final BundleContext context) throws Exception {
 		super.start(context);
-		resourceManager = new LocalResourceManager(
-				JFaceResources.getResources());
+		// resourceManager = new LocalResourceManager(
+		// JFaceResources.getResources());
 		// we want to be notified about debug options changes
 		Dictionary<String, String> props = new Hashtable<>(4);
 		props.put(DebugOptions.LISTENER_SYMBOLICNAME, context.getBundle()
@@ -311,30 +311,29 @@ public class Activator extends AbstractUIPlugin implements DebugOptionsListener 
 		setupCredentialsProvider();
 		ConfigurationChecker.checkConfiguration();
 
-		registerTemplateVariableResolvers();
+		// registerTemplateVariableResolvers();
 	}
 
 	private void setupCredentialsProvider() {
 		CredentialsProvider.setDefault(new EGitCredentialsProvider());
 	}
 
-	private void registerTemplateVariableResolvers() {
-		if (hasJavaPlugin()) {
-			final ContextTypeRegistry codeTemplateContextRegistry = JavaPlugin
-					.getDefault().getCodeTemplateContextRegistry();
-			final Iterator<?> ctIter = codeTemplateContextRegistry
-					.contextTypes();
-
-			while (ctIter.hasNext()) {
-				final TemplateContextType contextType = (TemplateContextType) ctIter
-						.next();
-				contextType
-						.addResolver(new GitTemplateVariableResolver(
-								"git_config", //$NON-NLS-1$
-								UIText.GitTemplateVariableResolver_GitConfigDescription));
-			}
-		}
-	}
+	// private void registerTemplateVariableResolvers() {
+	// if (hasJavaPlugin()) {
+	// final ContextTypeRegistry codeTemplateContextRegistry = JavaPlugin
+	// .getDefault().getCodeTemplateContextRegistry();
+	// final Iterator<?> ctIter = codeTemplateContextRegistry
+	// .contextTypes();
+	//
+	// while (ctIter.hasNext()) {
+	// final TemplateContextType contextType = (TemplateContextType) ctIter
+	// .next();
+	// contextType.addResolver(new GitTemplateVariableResolver(
+	// "git_config", //$NON-NLS-1$
+	// UIText.GitTemplateVariableResolver_GitConfigDescription));
+	// }
+	// }
+	// }
 
 	/**
 	 * @return true if at least one Eclipse window is active
