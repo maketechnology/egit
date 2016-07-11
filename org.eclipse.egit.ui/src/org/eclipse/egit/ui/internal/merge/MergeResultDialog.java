@@ -100,7 +100,8 @@ public class MergeResultDialog extends Dialog {
 
 	@Override
 	protected void createButtonsForButtonBar(final Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
+		createButton(parent, IDialogConstants.OK_ID,
+				IDialogConstants.get().OK_LABEL,
 				true).setFocus();
 	}
 
@@ -217,8 +218,8 @@ public class MergeResultDialog extends Dialog {
 			public StyledString getStyledText(Object element) {
 				// TODO Replace with use of IWorkbenchAdapter3 when is no longer
 				// supported
-				if (element instanceof RepositoryCommit)
-					return ((RepositoryCommit) element).getStyledText(element);
+				// if (element instanceof RepositoryCommit)
+				// return ((RepositoryCommit) element).getStyledText(element);
 
 				return new StyledString(wrapped.getText(element));
 			}

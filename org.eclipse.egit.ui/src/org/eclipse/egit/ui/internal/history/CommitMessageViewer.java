@@ -63,7 +63,7 @@ import org.eclipse.jgit.lib.RefDatabase;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revplot.PlotCommit;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.widgets.Composite;
@@ -117,8 +117,8 @@ class CommitMessageViewer extends HyperlinkSourceViewer {
 		super(parent, null, SWT.READ_ONLY);
 		this.partSite = partSite;
 
-		final StyledText t = getTextWidget();
-		t.setFont(UIUtils.getFont(UIPreferences.THEME_CommitMessageFont));
+		// final StyledText t = getTextWidget();
+		// t.setFont(UIUtils.getFont(UIPreferences.THEME_CommitMessageFont));
 
 		setTextDoubleClickStrategy(new DefaultTextDoubleClickStrategy(),
 				IDocument.DEFAULT_CONTENT_TYPE);
@@ -269,9 +269,9 @@ class CommitMessageViewer extends HyperlinkSourceViewer {
 			public void done(IJobChangeEvent event) {
 				if (!event.getResult().isOK())
 					return;
-				final StyledText text = getTextWidget();
-				if (text == null || text.isDisposed())
-					return;
+				// final StyledText text = getTextWidget();
+				// if (text == null || text.isDisposed())
+				// return;
 				final FormatResult result = ((FormatJob) event.getJob())
 						.getFormatResult();
 				text.getDisplay().asyncExec(new Runnable() {
@@ -391,9 +391,9 @@ class CommitMessageViewer extends HyperlinkSourceViewer {
 	}
 
 	private void applyFormatJobResultInUI(FormatResult formatResult) {
-		StyledText text = getTextWidget();
-		if (!UIUtils.isUsable(text))
-			return;
+		// StyledText text = getTextWidget();
+		// if (!UIUtils.isUsable(text))
+		// return;
 
 		setDocument(new CommitDocument(formatResult));
 	}

@@ -9,7 +9,7 @@
 package org.eclipse.egit.ui.internal.push;
 
 import java.io.IOException;
-import java.text.MessageFormat;
+//import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +17,13 @@ import org.eclipse.egit.core.op.PushOperationResult;
 import org.eclipse.egit.ui.Activator;
 import org.eclipse.egit.ui.internal.DecorationOverlayDescriptor;
 import org.eclipse.egit.ui.internal.UIIcons;
-import org.eclipse.egit.ui.internal.UIText;
+//import org.eclipse.egit.ui.internal.UIText;
 import org.eclipse.egit.ui.internal.commit.RepositoryCommit;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IDecoration;
-import org.eclipse.jface.viewers.StyledString;
+//import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jgit.lib.Constants;
-import org.eclipse.jgit.lib.ObjectId;
+//import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectReader;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
@@ -164,7 +164,8 @@ class RefUpdateElement extends WorkbenchAdapter {
 
 	@Override
 	public String getLabel(Object object) {
-		return getStyledText(object).getString();
+		return null;
+		// return getStyledText(object).getString();
 	}
 
 	private RepositoryCommit[] getCommits(Ref end) {
@@ -219,83 +220,84 @@ class RefUpdateElement extends WorkbenchAdapter {
 	 * @param object
 	 * @return styled string
 	 */
-	@Override
-	public StyledString getStyledText(Object object) {
-		StyledString styled = new StyledString();
-		final String remote = getDstRefName();
-		final String local = getSrcRefName();
-
-		if (!tag && local != null) {
-			styled.append(shortenRef(local));
-			styled.append(" \u2192 " /* → */); //$NON-NLS-1$
-		}
-		styled.append(shortenRef(remote));
-
-		styled.append(' ');
-		// Include uri if more than one
-		if (result.getURIs().size() > 1) {
-			styled.append(MessageFormat.format(
-					UIText.RefUpdateElement_UrisDecoration, uri.toString()),
-					StyledString.QUALIFIER_STYLER);
-			styled.append(' ');
-		}
-
-		switch (getStatus()) {
-		case OK:
-			if (update.isDelete())
-				styled.append(UIText.PushResultTable_statusOkDeleted,
-						StyledString.DECORATIONS_STYLER);
-			else {
-				final Ref oldRef = getAdvertisedRemoteRef();
-				if (oldRef == null) {
-					if (tag)
-						styled.append(UIText.PushResultTable_statusOkNewTag,
-								StyledString.DECORATIONS_STYLER);
-					else
-						styled.append(UIText.PushResultTable_statusOkNewBranch,
-								StyledString.DECORATIONS_STYLER);
-				} else {
-					String separator = update.isFastForward() ? ".." : "..."; //$NON-NLS-1$ //$NON-NLS-2$
-					ObjectId objectId = oldRef.getObjectId();
-					Object oldName = objectId != null
-							? objectId.abbreviate(7).name() : "?"; //$NON-NLS-1$
-					styled.append(MessageFormat.format(
-							UIText.RefUpdateElement_CommitRangeDecoration,
-							update.getNewObjectId().abbreviate(7).name(),
-									separator, oldName),
-							StyledString.DECORATIONS_STYLER);
-					styled.append(' ');
-					styled.append(MessageFormat.format(
-							UIText.RefUpdateElement_CommitCountDecoration,
-							Integer.valueOf(getChildren(this).length)),
-							StyledString.COUNTER_STYLER);
-				}
-			}
-			break;
-		case UP_TO_DATE:
-			styled.append(UIText.PushResultTable_statusUpToDate,
-					StyledString.DECORATIONS_STYLER);
-			break;
-		case NON_EXISTING:
-			styled.append(UIText.PushResultTable_statusNoMatch,
-					StyledString.DECORATIONS_STYLER);
-			break;
-		case REJECTED_NODELETE:
-		case REJECTED_REMOTE_CHANGED:
-			styled.append(UIText.PushResultTable_statusRejected,
-					StyledString.DECORATIONS_STYLER);
-			break;
-		case REJECTED_NONFASTFORWARD:
-			styled.append(UIText.RefUpdateElement_statusRejectedNonFastForward,
-					StyledString.DECORATIONS_STYLER);
-			break;
-		case REJECTED_OTHER_REASON:
-			styled.append(UIText.PushResultTable_statusRemoteRejected,
-					StyledString.DECORATIONS_STYLER);
-			break;
-		default:
-			break;
-		}
-		return styled;
-	}
+	// @Override
+	// public StyledString getStyledText(Object object) {
+	// StyledString styled = new StyledString();
+	// final String remote = getDstRefName();
+	// final String local = getSrcRefName();
+	//
+	// if (!tag && local != null) {
+	// styled.append(shortenRef(local));
+	// styled.append(" \u2192 " /* → */); //$NON-NLS-1$
+	// }
+	// styled.append(shortenRef(remote));
+	//
+	// styled.append(' ');
+	// // Include uri if more than one
+	// if (result.getURIs().size() > 1) {
+	// styled.append(MessageFormat.format(
+	// UIText.RefUpdateElement_UrisDecoration, uri.toString()),
+	// StyledString.QUALIFIER_STYLER);
+	// styled.append(' ');
+	// }
+	//
+	// switch (getStatus()) {
+	// case OK:
+	// if (update.isDelete())
+	// styled.append(UIText.PushResultTable_statusOkDeleted,
+	// StyledString.DECORATIONS_STYLER);
+	// else {
+	// final Ref oldRef = getAdvertisedRemoteRef();
+	// if (oldRef == null) {
+	// if (tag)
+	// styled.append(UIText.PushResultTable_statusOkNewTag,
+	// StyledString.DECORATIONS_STYLER);
+	// else
+	// styled.append(UIText.PushResultTable_statusOkNewBranch,
+	// StyledString.DECORATIONS_STYLER);
+	// } else {
+	// String separator = update.isFastForward() ? ".." : "..."; //$NON-NLS-1$
+	// //$NON-NLS-2$
+	// ObjectId objectId = oldRef.getObjectId();
+	// Object oldName = objectId != null
+	// ? objectId.abbreviate(7).name() : "?"; //$NON-NLS-1$
+	// styled.append(MessageFormat.format(
+	// UIText.RefUpdateElement_CommitRangeDecoration,
+	// update.getNewObjectId().abbreviate(7).name(),
+	// separator, oldName),
+	// StyledString.DECORATIONS_STYLER);
+	// styled.append(' ');
+	// styled.append(MessageFormat.format(
+	// UIText.RefUpdateElement_CommitCountDecoration,
+	// Integer.valueOf(getChildren(this).length)),
+	// StyledString.COUNTER_STYLER);
+	// }
+	// }
+	// break;
+	// case UP_TO_DATE:
+	// styled.append(UIText.PushResultTable_statusUpToDate,
+	// StyledString.DECORATIONS_STYLER);
+	// break;
+	// case NON_EXISTING:
+	// styled.append(UIText.PushResultTable_statusNoMatch,
+	// StyledString.DECORATIONS_STYLER);
+	// break;
+	// case REJECTED_NODELETE:
+	// case REJECTED_REMOTE_CHANGED:
+	// styled.append(UIText.PushResultTable_statusRejected,
+	// StyledString.DECORATIONS_STYLER);
+	// break;
+	// case REJECTED_NONFASTFORWARD:
+	// styled.append(UIText.RefUpdateElement_statusRejectedNonFastForward,
+	// StyledString.DECORATIONS_STYLER);
+	// break;
+	// case REJECTED_OTHER_REASON:
+	// styled.append(UIText.PushResultTable_statusRemoteRejected,
+	// StyledString.DECORATIONS_STYLER);
+	// break;
+	// default:
+	// break;
+	// }
+	// return styled;
+	// }
 }

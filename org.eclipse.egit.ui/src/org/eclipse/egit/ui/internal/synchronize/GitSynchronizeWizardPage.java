@@ -33,8 +33,8 @@ import org.eclipse.egit.ui.internal.UIIcons;
 import org.eclipse.egit.ui.internal.UIText;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.layout.GridDataFactory;
-import org.eclipse.jface.preference.JFacePreferences;
-import org.eclipse.jface.resource.JFaceResources;
+//import org.eclipse.jface.preference.JFacePreferences;
+//import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
@@ -51,10 +51,10 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.StyleRange;
+//import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Color;
+//import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -133,18 +133,19 @@ class GitSynchronizeWizardPage extends WizardPage {
 						Activator.logError(e.getMessage(), e);
 					}
 
-					Color decorationsColor = JFaceResources.getColorRegistry()
-							.get(JFacePreferences.DECORATIONS_COLOR);
+					// Color decorationsColor =
+					// JFaceResources.getColorRegistry()
+					// .get(JFacePreferences.DECORATIONS_COLOR);
 
 					String repoName = repo.getWorkTree().getName();
-					int repoNameLen = repoName.length();
-					StyleRange styleRange = new StyleRange(repoNameLen,
-							repoNameLen + descr.length(), decorationsColor,
-							null);
+					// int repoNameLen = repoName.length();
+					// StyleRange styleRange = new StyleRange(repoNameLen,
+					// repoNameLen + descr.length(), decorationsColor,
+					// null);
 
 					cell.setImage(repositoryImage);
 					cell.setText(repoName + descr);
-					cell.setStyleRanges(new StyleRange[] { styleRange });
+					// cell.setStyleRanges(new StyleRange[] { styleRange });
 				}
 
 				super.update(cell);

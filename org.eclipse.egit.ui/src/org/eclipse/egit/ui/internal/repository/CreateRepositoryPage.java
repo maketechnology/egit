@@ -29,7 +29,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
+//import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -72,16 +72,16 @@ public class CreateRepositoryPage extends WizardPage {
 		browseButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				String previous = directoryText.getText();
-				File previousFile = new File(previous);
-				String result;
-				DirectoryDialog dialog = new DirectoryDialog(getShell());
-				if (previousFile.exists() && previousFile.isDirectory()) {
-					dialog.setFilterPath(previousFile.getPath());
-				}
-				result = dialog.open();
-				if (result != null)
-					directoryText.setText(result);
+				// String previous = directoryText.getText();
+				// File previousFile = new File(previous);
+				// String result;
+				// DirectoryDialog dialog = new DirectoryDialog(getShell());
+				// if (previousFile.exists() && previousFile.isDirectory()) {
+				// dialog.setFilterPath(previousFile.getPath());
+				// }
+				// result = dialog.open();
+				// if (result != null)
+				// directoryText.setText(result);
 			}
 		});
 

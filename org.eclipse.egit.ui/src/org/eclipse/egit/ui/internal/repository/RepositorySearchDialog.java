@@ -58,7 +58,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
+//import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -243,23 +243,23 @@ public class RepositorySearchDialog extends WizardPage {
 		browse.setText(UIText.RepositorySearchDialog_browse);
 		browse.addSelectionListener(new SelectionAdapter() {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				DirectoryDialog dd = new DirectoryDialog(getShell());
-				dd.setFilterPath(dir.getText());
-				String directory = dd.open();
-				if (directory != null) {
-					dir.setText(directory);
-					prefs.put(PREF_PATH, directory);
-					try {
-						prefs.flush();
-					} catch (BackingStoreException e1) {
-						// ignore here
-					}
-					doSearch();
-				}
-			}
-
+			// @Override
+			// public void widgetSelected(SelectionEvent e) {
+			// DirectoryDialog dd = new DirectoryDialog(getShell());
+			// dd.setFilterPath(dir.getText());
+			// String directory = dd.open();
+			// if (directory != null) {
+			// dir.setText(directory);
+			// prefs.put(PREF_PATH, directory);
+			// try {
+			// prefs.flush();
+			// } catch (BackingStoreException e1) {
+			// // ignore here
+			// }
+			// doSearch();
+			// }
+			// }
+			//
 		});
 
 		searchButton = new Button(searchGroup, SWT.PUSH);

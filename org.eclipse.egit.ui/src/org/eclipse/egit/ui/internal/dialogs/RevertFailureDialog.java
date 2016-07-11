@@ -12,7 +12,7 @@ package org.eclipse.egit.ui.internal.dialogs;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Collection;
+//import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +28,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
-import org.eclipse.jface.viewers.StyledString;
+//import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jgit.api.MergeResult;
@@ -41,7 +41,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.WorkbenchAdapter;
-import org.eclipse.ui.model.WorkbenchContentProvider;
+//import org.eclipse.ui.model.WorkbenchContentProvider;
 
 /**
  * Dialog to display when a revert fails
@@ -97,20 +97,20 @@ public class RevertFailureDialog extends MessageDialog {
 						.getImageDescriptor(ISharedImages.IMG_OBJ_FILE);
 		}
 
-		@Override
-		public StyledString getStyledText(Object object) {
-			int lastSlash = path.lastIndexOf('/');
-			StyledString styled = new StyledString();
-			if (lastSlash != -1 && lastSlash + 1 < path.length()) {
-				String name = path.substring(lastSlash + 1);
-				styled.append(name).append(' ');
-				styled.append("- ", StyledString.QUALIFIER_STYLER); //$NON-NLS-1$
-				styled.append(path.substring(0, lastSlash),
-						StyledString.QUALIFIER_STYLER);
-			} else
-				styled.append(path);
-			return styled;
-		}
+//		@Override
+//		public StyledString getStyledText(Object object) {
+//			int lastSlash = path.lastIndexOf('/');
+//			StyledString styled = new StyledString();
+//			if (lastSlash != -1 && lastSlash + 1 < path.length()) {
+//				String name = path.substring(lastSlash + 1);
+//				styled.append(name).append(' ');
+//				styled.append("- ", StyledString.QUALIFIER_STYLER); //$NON-NLS-1$
+//				styled.append(path.substring(0, lastSlash),
+//						StyledString.QUALIFIER_STYLER);
+//			} else
+//				styled.append(path);
+//			return styled;
+//		}
 	}
 
 	private static class RevertFailure extends WorkbenchAdapter {
@@ -148,14 +148,14 @@ public class RevertFailureDialog extends MessageDialog {
 			}
 		}
 
-		@Override
-		public StyledString getStyledText(Object object) {
-			StyledString styled = new StyledString(getLabel(object));
-			styled.append(' ');
-			styled.append(MessageFormat.format("({0})", //$NON-NLS-1$
-					Integer.valueOf(paths.size())), StyledString.COUNTER_STYLER);
-			return styled;
-		}
+//		@Override
+//		public StyledString getStyledText(Object object) {
+//			StyledString styled = new StyledString(getLabel(object));
+//			styled.append(' ');
+//			styled.append(MessageFormat.format("({0})", //$NON-NLS-1$
+//					Integer.valueOf(paths.size())), StyledString.COUNTER_STYLER);
+//			return styled;
+//		}
 	}
 
 	private final Map<String, MergeFailureReason> reasons;
@@ -170,7 +170,7 @@ public class RevertFailureDialog extends MessageDialog {
 	public RevertFailureDialog(Shell shell, String message,
 			Map<String, MergeFailureReason> reasons) {
 		super(shell, UIText.RevertFailureDialog_Title, null, message, ERROR,
-				new String[] { IDialogConstants.OK_LABEL }, 0);
+				new String[] { IDialogConstants.get().OK_LABEL }, 0);
 		this.reasons = reasons;
 	}
 
@@ -188,27 +188,27 @@ public class RevertFailureDialog extends MessageDialog {
 		viewer.setAutoExpandLevel(AbstractTreeViewer.ALL_LEVELS);
 		GridDataFactory.fillDefaults().grab(true, true)
 				.applyTo(viewer.getControl());
-		viewer.setContentProvider(new WorkbenchContentProvider() {
-
-			@Override
-			public Object[] getElements(Object element) {
-				return ((Collection) element).toArray();
-			}
-
-		});
+//		viewer.setContentProvider(new WorkbenchContentProvider() {
+//
+//			@Override
+//			public Object[] getElements(Object element) {
+//				return ((Collection) element).toArray();
+//			}
+//
+//		});
 		final IStyledLabelProvider styleProvider = new WorkbenchStyledLabelProvider() {
 
-			@Override
-			public StyledString getStyledText(Object element) {
-				// TODO Replace with use of IWorkbenchAdapter3 when is no longer
-				// supported
-				if (element instanceof RevertFailure)
-					return ((RevertFailure) element).getStyledText(element);
-				if (element instanceof Path)
-					return ((Path) element).getStyledText(element);
-
-				return super.getStyledText(element);
-			}
+//			@Override
+//			public StyledString getStyledText(Object element) {
+//				// TODO Replace with use of IWorkbenchAdapter3 when is no longer
+//				// supported
+//				if (element instanceof RevertFailure)
+//					return ((RevertFailure) element).getStyledText(element);
+//				if (element instanceof Path)
+//					return ((Path) element).getStyledText(element);
+//
+//				return super.getStyledText(element);
+//			}
 		};
 		viewer.setLabelProvider(new DelegatingStyledCellLabelProvider(
 				styleProvider));

@@ -69,7 +69,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
+//import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -217,16 +217,16 @@ class ExistingOrNewPage extends WizardPage {
 		browseRepository
 				.setText(UIText.ExistingOrNewPage_BrowseRepositoryButton);
 		browseRepository.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				DirectoryDialog dlg = new DirectoryDialog(getShell());
-				dlg.setFilterPath(selectedRepository.getWorkTree().getPath());
-				String directory = dlg.open();
-				if (directory != null) {
-					setRelativePath(directory);
-					updateControls();
-				}
-			}
+			// @Override
+			// public void widgetSelected(SelectionEvent e) {
+			// DirectoryDialog dlg = new DirectoryDialog(getShell());
+			// dlg.setFilterPath(selectedRepository.getWorkTree().getPath());
+			// String directory = dlg.open();
+			// if (directory != null) {
+			// setRelativePath(directory);
+			// updateControls();
+			// }
+			// }
 		});
 
 		Table projectMoveTable = new Table(externalComposite, SWT.MULTI

@@ -14,7 +14,7 @@ import java.util.Collection;
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.egit.ui.internal.selection.SelectionUtils;
-import org.eclipse.jface.text.ITextSelection;
+//import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jgit.annotations.NonNull;
@@ -70,13 +70,13 @@ public class ResourceStatePropertyTester extends PropertyTester {
 			return false;
 		}
 		IStructuredSelection selection = null;
-		Object first = collection.iterator().next();
-		if (collection.size() == 1 && first instanceof ITextSelection) {
-			selection = SelectionUtils
-					.getStructuredSelection((ITextSelection) first);
-		} else {
+		// Object first = collection.iterator().next();
+		// if (collection.size() == 1 && first instanceof ITextSelection) {
+		// selection = SelectionUtils
+		// .getStructuredSelection((ITextSelection) first);
+		// } else {
 			selection = new StructuredSelection(new ArrayList<>(collection));
-		}
+		// }
 		for (IResource resource : SelectionUtils
 				.getSelectedResources(selection)) {
 			if (resource == null || !resource.isAccessible()) {

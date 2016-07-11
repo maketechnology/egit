@@ -58,7 +58,7 @@ import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
+//import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -220,7 +220,7 @@ public class CommitEditorPage extends FormPage implements ISchedulingRule {
 	void updateSectionClient(Section section, Composite client,
 			FormToolkit toolkit) {
 		hookExpansionGrabbing(section);
-		toolkit.paintBordersFor(client);
+		// toolkit.paintBordersFor(client);
 		section.setClient(client);
 	}
 
@@ -404,11 +404,12 @@ public class CommitEditorPage extends FormPage implements ISchedulingRule {
 			textContent.setData(FormToolkit.KEY_DRAW_BORDER,
 					FormToolkit.TEXT_BORDER);
 
-		Point size = textContent.getTextWidget().computeSize(SWT.DEFAULT,
-				SWT.DEFAULT);
-		int yHint = size.y > 80 ? 80 : SWT.DEFAULT;
-		GridDataFactory.fillDefaults().hint(SWT.DEFAULT, yHint).minSize(1, 20)
-				.grab(true, true).applyTo(textContent);
+		// Point size = textContent.getTextWidget().computeSize(SWT.DEFAULT,
+		// SWT.DEFAULT);
+		// int yHint = size.y > 80 ? 80 : SWT.DEFAULT;
+		// GridDataFactory.fillDefaults().hint(SWT.DEFAULT, yHint).minSize(1,
+		// 20)
+		// .grab(true, true).applyTo(textContent);
 
 		updateSectionClient(messageSection, messageArea, toolkit);
 	}

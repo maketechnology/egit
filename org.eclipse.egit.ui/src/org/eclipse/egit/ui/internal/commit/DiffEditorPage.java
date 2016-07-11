@@ -41,7 +41,7 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Menu;
+//import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.forms.IManagedForm;
@@ -222,7 +222,7 @@ public class DiffEditorPage extends FormPage {
 
 		MenuManager manager = new MenuManager();
 		addEditorActions(manager);
-		Menu menu = manager.createContextMenu(viewer.getTextWidget());
+		// Menu menu = manager.createContextMenu(viewer.getTextWidget());
 		IEditorSite site = getEditorSite();
 		site.setSelectionProvider(viewer);
 		site.registerContextMenu(
@@ -231,7 +231,7 @@ public class DiffEditorPage extends FormPage {
 		site.registerContextMenu(
 				AbstractTextEditor.DEFAULT_EDITOR_CONTEXT_MENU_ID, manager,
 				viewer, true);
-		viewer.getTextWidget().setMenu(menu);
+		// viewer.getTextWidget().setMenu(menu);
 
 		formatDiff();
 	}

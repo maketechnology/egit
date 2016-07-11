@@ -28,26 +28,26 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.egit.core.AdapterUtils;
 import org.eclipse.egit.core.internal.util.ResourceUtil;
 import org.eclipse.egit.ui.Activator;
-import org.eclipse.egit.ui.internal.CommonUtils;
+//import org.eclipse.egit.ui.internal.CommonUtils;
 import org.eclipse.egit.ui.internal.UIText;
-import org.eclipse.egit.ui.internal.revision.FileRevisionEditorInput;
+//import org.eclipse.egit.ui.internal.revision.FileRevisionEditorInput;
 import org.eclipse.egit.ui.internal.trace.GitTraceLocation;
 import org.eclipse.jgit.annotations.NonNull;
 import org.eclipse.jgit.annotations.Nullable;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.text.ITextSelection;
+//import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.team.core.history.IFileRevision;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
+//import org.eclipse.team.core.history.IFileRevision;
+//import org.eclipse.ui.IEditorInput;
+//import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISources;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.handlers.IHandlerService;
+//import org.eclipse.ui.IWorkbenchWindow;
+//import org.eclipse.ui.PlatformUI;
+//import org.eclipse.ui.handlers.IHandlerService;
 
 /**
  * Utilities for working with selections.
@@ -105,10 +105,12 @@ public class SelectionUtils {
 			selection = context
 					.getVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME);
 
-		if (selection instanceof ITextSelection)
-			return getSelectionFromEditorInput(context);
-		else if (selection instanceof IStructuredSelection)
+		// if (selection instanceof ITextSelection)
+		// return getSelectionFromEditorInput(context);
+		/* else */
+		if (selection instanceof IStructuredSelection)
 			return (IStructuredSelection) selection;
+
 		return StructuredSelection.EMPTY;
 	}
 
@@ -124,9 +126,10 @@ public class SelectionUtils {
 	@NonNull
 	public static IStructuredSelection getStructuredSelection(
 			@NonNull ISelection selection) {
-		if (selection instanceof ITextSelection)
-			return getSelectionFromEditorInput(getEvaluationContext());
-		else if (selection instanceof IStructuredSelection)
+		/*
+		 * if (selection instanceof ITextSelection) return
+		 * getSelectionFromEditorInput(getEvaluationContext()); else
+		 */ if (selection instanceof IStructuredSelection)
 			return (IStructuredSelection) selection;
 		return StructuredSelection.EMPTY;
 	}
@@ -312,46 +315,48 @@ public class SelectionUtils {
 		return result;
 	}
 
-	private static IStructuredSelection getSelectionFromEditorInput(
-			IEvaluationContext context) {
-		Object object = context.getVariable(ISources.ACTIVE_EDITOR_INPUT_NAME);
-		if (!(object instanceof IEditorInput)) {
-			Object editor = context.getVariable(ISources.ACTIVE_EDITOR_NAME);
-			if (editor instanceof IEditorPart)
-				object = ((IEditorPart) editor).getEditorInput();
-		}
+	// private static IStructuredSelection getSelectionFromEditorInput(
+	// IEvaluationContext context) {
+	// Object object = context.getVariable(ISources.ACTIVE_EDITOR_INPUT_NAME);
+	// if (!(object instanceof IEditorInput)) {
+	// Object editor = context.getVariable(ISources.ACTIVE_EDITOR_NAME);
+	// if (editor instanceof IEditorPart)
+	// object = ((IEditorPart) editor).getEditorInput();
+	// }
+	//
+	// if (object instanceof IEditorInput) {
+	// IEditorInput editorInput = (IEditorInput) object;
+	// // Note that there is both a getResource(IEditorInput) as well as a
+	// // getResource(Object), which don't do the same thing. We explicitly
+	// // want the first here.
+	// IResource resource = org.eclipse.ui.ide.ResourceUtil
+	// .getResource(editorInput);
+	// if (resource != null)
+	// return new StructuredSelection(resource);
+	// if (editorInput instanceof FileRevisionEditorInput) {
+	// FileRevisionEditorInput fileRevisionEditorInput =
+	// (FileRevisionEditorInput) editorInput;
+	// IFileRevision fileRevision = fileRevisionEditorInput
+	// .getFileRevision();
+	// if (fileRevision != null)
+	// return new StructuredSelection(fileRevision);
+	// }
+	// }
+	//
+	// return StructuredSelection.EMPTY;
+	// }
 
-		if (object instanceof IEditorInput) {
-			IEditorInput editorInput = (IEditorInput) object;
-			// Note that there is both a getResource(IEditorInput) as well as a
-			// getResource(Object), which don't do the same thing. We explicitly
-			// want the first here.
-			IResource resource = org.eclipse.ui.ide.ResourceUtil
-					.getResource(editorInput);
-			if (resource != null)
-				return new StructuredSelection(resource);
-			if (editorInput instanceof FileRevisionEditorInput) {
-				FileRevisionEditorInput fileRevisionEditorInput = (FileRevisionEditorInput) editorInput;
-				IFileRevision fileRevision = fileRevisionEditorInput
-						.getFileRevision();
-				if (fileRevision != null)
-					return new StructuredSelection(fileRevision);
-			}
-		}
-
-		return StructuredSelection.EMPTY;
-	}
-
-	private static IEvaluationContext getEvaluationContext() {
-		IEvaluationContext ctx;
-		IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow();
-		// no active window during Eclipse shutdown
-		if (activeWorkbenchWindow == null)
-			return null;
-		IHandlerService hsr = CommonUtils.getService(activeWorkbenchWindow, IHandlerService.class);
-		ctx = hsr.getCurrentState();
-		return ctx;
-	}
+	// private static IEvaluationContext getEvaluationContext() {
+	// IEvaluationContext ctx;
+	// IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench()
+	// .getActiveWorkbenchWindow();
+	// // no active window during Eclipse shutdown
+	// if (activeWorkbenchWindow == null)
+	// return null;
+	// IHandlerService hsr = CommonUtils.getService(activeWorkbenchWindow,
+	// IHandlerService.class);
+	// ctx = hsr.getCurrentState();
+	// return ctx;
+	// }
 
 }

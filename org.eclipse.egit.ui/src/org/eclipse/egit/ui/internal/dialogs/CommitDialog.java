@@ -73,7 +73,7 @@ import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
+//import org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.ICheckStateListener;
@@ -570,8 +570,8 @@ public class CommitDialog extends TitleAreaDialog {
 				UIText.CommitDialog_CommitAndPush, false);
 		commitButton = createButton(parent, IDialogConstants.OK_ID,
 				UIText.CommitDialog_Commit, true);
-		createButton(parent, IDialogConstants.CANCEL_ID,
-				IDialogConstants.CANCEL_LABEL, false);
+		// createButton(parent, IDialogConstants.CANCEL_ID,
+		// IDialogConstants.CANCEL_LABEL, false);
 		updateMessage();
 	}
 
@@ -706,7 +706,7 @@ public class CommitDialog extends TitleAreaDialog {
 
 		container = toolkit.createComposite(container);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(container);
-		toolkit.paintBordersFor(container);
+		// toolkit.paintBordersFor(container);
 		GridLayoutFactory.swtDefaults().applyTo(container);
 
 		final SashForm sashForm= new SashForm(container, SWT.VERTICAL
@@ -752,7 +752,7 @@ public class CommitDialog extends TitleAreaDialog {
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(filesSection);
 		Composite filesArea = toolkit.createComposite(filesSection);
 		filesSection.setClient(filesArea);
-		toolkit.paintBordersFor(filesArea);
+		// toolkit.paintBordersFor(filesArea);
 		GridLayoutFactory.fillDefaults().extendedMargins(2, 2, 2, 2)
 				.applyTo(filesArea);
 
@@ -977,7 +977,7 @@ public class CommitDialog extends TitleAreaDialog {
 		Composite messageArea = toolkit.createComposite(messageSection);
 		GridLayoutFactory.fillDefaults().spacing(0, 0)
 				.extendedMargins(2, 2, 2, 2).applyTo(messageArea);
-		toolkit.paintBordersFor(messageArea);
+		// toolkit.paintBordersFor(messageArea);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(messageSection);
 		GridLayoutFactory.swtDefaults().applyTo(messageSection);
 
