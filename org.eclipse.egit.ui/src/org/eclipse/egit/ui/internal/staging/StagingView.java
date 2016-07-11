@@ -150,7 +150,7 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.custom.VerifyKeyListener;
+//import org.eclipse.swt.custom.VerifyKeyListener;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
@@ -162,13 +162,13 @@ import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
+//import org.eclipse.swt.events.FocusEvent;
+//import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.VerifyEvent;
+//import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -685,7 +685,7 @@ public class StagingView extends ViewPart implements IShowInSource {
 		createUnstagedToolBarComposite();
 
 		Composite unstagedComposite = toolkit.createComposite(unstagedSection);
-		toolkit.paintBordersFor(unstagedComposite);
+		// toolkit.paintBordersFor(unstagedComposite);
 		unstagedSection.setClient(unstagedComposite);
 		GridLayoutFactory.fillDefaults().extendedMargins(2, 2, 2, 2)
 				.applyTo(unstagedComposite);
@@ -743,7 +743,7 @@ public class StagingView extends ViewPart implements IShowInSource {
 		rebaseSection.setText(UIText.StagingView_RebaseLabel);
 
 		Composite rebaseComposite = toolkit.createComposite(rebaseSection);
-		toolkit.paintBordersFor(rebaseComposite);
+		// toolkit.paintBordersFor(rebaseComposite);
 		rebaseSection.setClient(rebaseComposite);
 
 		rebaseSection.setLayoutData(GridDataFactory.fillDefaults().create());
@@ -851,7 +851,7 @@ public class StagingView extends ViewPart implements IShowInSource {
 
 		Composite commitMessageTextComposite = toolkit
 				.createComposite(commitMessageComposite);
-		toolkit.paintBordersFor(commitMessageTextComposite);
+		// toolkit.paintBordersFor(commitMessageTextComposite);
 		GridDataFactory.fillDefaults().grab(true, true)
 				.applyTo(commitMessageTextComposite);
 		GridLayoutFactory.fillDefaults().numColumns(1)
@@ -884,11 +884,11 @@ public class StagingView extends ViewPart implements IShowInSource {
 				FormToolkit.TEXT_BORDER);
 		GridDataFactory.fillDefaults().grab(true, true)
 				.applyTo(commitMessageText);
-		UIUtils.addBulbDecorator(commitMessageText.getTextWidget(),
-				UIText.CommitDialog_ContentAssist);
+		// UIUtils.addBulbDecorator(commitMessageText.getTextWidget(),
+		// UIText.CommitDialog_ContentAssist);
 
 		Composite composite = toolkit.createComposite(commitMessageComposite);
-		toolkit.paintBordersFor(composite);
+		// toolkit.paintBordersFor(composite);
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(composite);
 		GridLayoutFactory.swtDefaults().numColumns(2).applyTo(composite);
 
@@ -993,7 +993,7 @@ public class StagingView extends ViewPart implements IShowInSource {
 		createStagedToolBarComposite();
 
 		Composite stagedComposite = toolkit.createComposite(stagedSection);
-		toolkit.paintBordersFor(stagedComposite);
+		// toolkit.paintBordersFor(stagedComposite);
 		stagedSection.setClient(stagedComposite);
 		GridLayoutFactory.fillDefaults().extendedMargins(2, 2, 2, 2)
 				.applyTo(stagedComposite);
@@ -1105,31 +1105,34 @@ public class StagingView extends ViewPart implements IShowInSource {
 				committerText);
 
 		// allow to commit with ctrl-enter
-		commitMessageText.getTextWidget().addVerifyKeyListener(new VerifyKeyListener() {
-			@Override
-			public void verifyKey(VerifyEvent event) {
-				if (UIUtils.isSubmitKeyEvent(event)) {
-					event.doit = false;
-					commit(false);
-				}
-			}
-		});
+		// commitMessageText.getTextWidget().addVerifyKeyListener(new
+		// VerifyKeyListener() {
+		// @Override
+		// public void verifyKey(VerifyEvent event) {
+		// if (UIUtils.isSubmitKeyEvent(event)) {
+		// event.doit = false;
+		// commit(false);
+		// }
+		// }
+		// });
 
-		commitMessageText.getTextWidget().addFocusListener(new FocusListener() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				// Ctrl+Enter shortcut only works when the focus is on the commit message text
-				String commitButtonTooltip = MessageFormat.format(
-						UIText.StagingView_CommitToolTip,
-						UIUtils.SUBMIT_KEY_STROKE.format());
-				commitButton.setToolTipText(commitButtonTooltip);
-			}
-
-			@Override
-			public void focusLost(FocusEvent e) {
-				commitButton.setToolTipText(null);
-			}
-		});
+		// commitMessageText.getTextWidget().addFocusListener(new
+		// FocusListener() {
+		// @Override
+		// public void focusGained(FocusEvent e) {
+		// // Ctrl+Enter shortcut only works when the focus is on the commit
+		// message text
+		// String commitButtonTooltip = MessageFormat.format(
+		// UIText.StagingView_CommitToolTip,
+		// UIUtils.SUBMIT_KEY_STROKE.format());
+		// commitButton.setToolTipText(commitButtonTooltip);
+		// }
+		//
+		// @Override
+		// public void focusLost(FocusEvent e) {
+		// commitButton.setToolTipText(null);
+		// }
+		// });
 
 		// react on selection changes
 		IWorkbenchPartSite site = getSite();

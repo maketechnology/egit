@@ -14,11 +14,11 @@ import org.eclipse.egit.ui.internal.UIText;
 import org.eclipse.egit.ui.internal.dialogs.SpellcheckableMessageArea;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
-import org.eclipse.jface.resource.JFaceResources;
+//import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.IDetailsPage;
 import org.eclipse.ui.forms.IDetailsPageProvider;
@@ -29,8 +29,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 
 /**
- * Note details page that display the text content of a note in a
- * {@link StyledText} widget.
+ * Note details page that display the text content of a note in a .
  */
 public class NoteDetailsPage implements IDetailsPage, IDetailsPageProvider {
 
@@ -102,7 +101,7 @@ public class NoteDetailsPage implements IDetailsPage, IDetailsPageProvider {
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(notesSection);
 
 		Composite notesArea = toolkit.createComposite(notesSection);
-		toolkit.paintBordersFor(notesArea);
+		// toolkit.paintBordersFor(notesArea);
 		notesSection.setClient(notesArea);
 		GridLayoutFactory.fillDefaults().extendedMargins(2, 2, 2, 2)
 				.applyTo(notesArea);
@@ -116,13 +115,13 @@ public class NoteDetailsPage implements IDetailsPage, IDetailsPageProvider {
 
 		};
 		notesText.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		StyledText text = notesText.getTextWidget();
-		text.setEditable(false);
-		text.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
-		text.setForeground(text.getDisplay().getSystemColor(
-				SWT.COLOR_INFO_FOREGROUND));
-		text.setBackground(text.getDisplay().getSystemColor(
-				SWT.COLOR_INFO_BACKGROUND));
+		// StyledText text = notesText.getTextWidget();
+		// text.setEditable(false);
+		// text.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
+		// text.setForeground(text.getDisplay().getSystemColor(
+		// SWT.COLOR_INFO_FOREGROUND));
+		// text.setBackground(text.getDisplay().getSystemColor(
+		// SWT.COLOR_INFO_BACKGROUND));
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(notesText);
 	}
 

@@ -13,7 +13,7 @@
 package org.eclipse.egit.ui.internal.commit;
 
 import java.io.IOException;
-import java.text.MessageFormat;
+//import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,15 +21,15 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.egit.ui.Activator;
-import org.eclipse.egit.ui.internal.PreferenceBasedDateFormatter;
+//import org.eclipse.egit.ui.internal.PreferenceBasedDateFormatter;
 import org.eclipse.egit.ui.internal.UIIcons;
-import org.eclipse.egit.ui.internal.UIText;
+//import org.eclipse.egit.ui.internal.UIText;
 import org.eclipse.egit.ui.internal.history.FileDiff;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.viewers.StyledString;
+//import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Constants;
-import org.eclipse.jgit.lib.PersonIdent;
+//import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.notes.Note;
@@ -239,32 +239,32 @@ public class RepositoryCommit extends WorkbenchAdapter implements IAdaptable {
 	 * @param object
 	 * @return styled text
 	 */
-	@Override
-	public StyledString getStyledText(Object object) {
-		StyledString styled = new StyledString();
-		styled.append(abbreviate());
-		styled.append(": "); //$NON-NLS-1$
-		styled.append(commit.getShortMessage());
-
-		PersonIdent author = commit.getAuthorIdent();
-		PersonIdent committer = commit.getCommitterIdent();
-		if (author != null && committer != null) {
-			PreferenceBasedDateFormatter formatter = PreferenceBasedDateFormatter
-					.create();
-			if (author.getName().equals(committer.getName())) {
-				styled.append(
-						MessageFormat.format(UIText.RepositoryCommit_AuthorDate,
-								author.getName(), formatter.formatDate(author)),
-						StyledString.QUALIFIER_STYLER);
-			} else {
-				styled.append(MessageFormat.format(
-						UIText.RepositoryCommit_AuthorDateCommitter,
-								author.getName(), formatter.formatDate(author),
-						committer.getName()), StyledString.QUALIFIER_STYLER);
-			}
-		}
-		return styled;
-	}
+	// @Override
+	// public StyledString getStyledText(Object object) {
+	// StyledString styled = new StyledString();
+	// styled.append(abbreviate());
+	// styled.append(": "); //$NON-NLS-1$
+	// styled.append(commit.getShortMessage());
+	//
+	// PersonIdent author = commit.getAuthorIdent();
+	// PersonIdent committer = commit.getCommitterIdent();
+	// if (author != null && committer != null) {
+	// PreferenceBasedDateFormatter formatter = PreferenceBasedDateFormatter
+	// .create();
+	// if (author.getName().equals(committer.getName())) {
+	// styled.append(
+	// MessageFormat.format(UIText.RepositoryCommit_AuthorDate,
+	// author.getName(), formatter.formatDate(author)),
+	// StyledString.QUALIFIER_STYLER);
+	// } else {
+	// styled.append(MessageFormat.format(
+	// UIText.RepositoryCommit_AuthorDateCommitter,
+	// author.getName(), formatter.formatDate(author),
+	// committer.getName()), StyledString.QUALIFIER_STYLER);
+	// }
+	// }
+	// return styled;
+	// }
 
 	/**
 	 * Marks this commit as a stash commit.

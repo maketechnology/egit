@@ -107,8 +107,10 @@ public class SelectionUtils {
 
 		// if (selection instanceof ITextSelection)
 		// return getSelectionFromEditorInput(context);
-		// else if (selection instanceof IStructuredSelection)
-		// return (IStructuredSelection) selection;
+		/* else */
+		if (selection instanceof IStructuredSelection)
+			return (IStructuredSelection) selection;
+
 		return StructuredSelection.EMPTY;
 	}
 

@@ -8,15 +8,15 @@
 package org.eclipse.egit.ui.internal.fetch;
 
 import java.io.IOException;
-import java.text.MessageFormat;
+//import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+//import java.util.Map;
 
 import org.eclipse.egit.ui.Activator;
 import org.eclipse.egit.ui.UIUtils;
-import org.eclipse.egit.ui.internal.DecorationOverlayDescriptor;
+//import org.eclipse.egit.ui.internal.DecorationOverlayDescriptor;
 import org.eclipse.egit.ui.internal.UIIcons;
 import org.eclipse.egit.ui.internal.UIText;
 import org.eclipse.egit.ui.internal.WorkbenchStyledLabelProvider;
@@ -30,7 +30,7 @@ import org.eclipse.jface.util.OpenStrategy;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
-import org.eclipse.jface.viewers.IDecoration;
+//import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StyledString;
@@ -38,10 +38,10 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jgit.lib.Constants;
-import org.eclipse.jgit.lib.ObjectId;
+//import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.ObjectReader;
 import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.notes.NoteMap;
+//import org.eclipse.jgit.notes.NoteMap;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.eclipse.jgit.transport.FetchResult;
@@ -74,10 +74,10 @@ class FetchResultTable {
 			this.update = update;
 		}
 
-		@Override
-		public String getLabel(Object object) {
-			return getStyledText(object).getString();
-		}
+		// @Override
+		// public String getLabel(Object object) {
+		// return getStyledText(object).getString();
+		// }
 
 		@Override
 		public ImageDescriptor getImageDescriptor(Object object) {
@@ -88,16 +88,16 @@ class FetchResultTable {
 			case REJECTED:
 				return PlatformUI.getWorkbench().getSharedImages()
 						.getImageDescriptor(ISharedImages.IMG_OBJS_ERROR_TSK);
-			case FORCED:
-				if (isPruned()) {
-					ImageDescriptor icon = UIIcons.BRANCH;
-					if (update.getLocalName().startsWith(Constants.R_TAGS))
-						icon = UIIcons.TAG;
-					if (update.getLocalName().startsWith(Constants.R_NOTES))
-						icon = UIIcons.NOTE;
-					return new DecorationOverlayDescriptor(icon,
-							UIIcons.OVR_STAGED_REMOVE, IDecoration.TOP_RIGHT);
-				}
+			// case FORCED:
+			// if (isPruned()) {
+			// ImageDescriptor icon = UIIcons.BRANCH;
+			// if (update.getLocalName().startsWith(Constants.R_TAGS))
+			// icon = UIIcons.TAG;
+			// if (update.getLocalName().startsWith(Constants.R_NOTES))
+			// icon = UIIcons.NOTE;
+			// return new DecorationOverlayDescriptor(icon,
+			// UIIcons.OVR_STAGED_REMOVE, IDecoration.TOP_RIGHT);
+			// }
 				// else
 				//$FALL-THROUGH$
 			case RENAMED:
@@ -123,20 +123,20 @@ class FetchResultTable {
 			return super.getImageDescriptor(object);
 		}
 
-		private void addCommits(StyledString styled, String separator) {
-			styled.append('[', StyledString.DECORATIONS_STYLER);
-			styled.append(safeAbbreviate(update.getNewObjectId()),
-					StyledString.DECORATIONS_STYLER);
-			styled.append(separator, StyledString.DECORATIONS_STYLER);
-			styled.append(safeAbbreviate(update.getOldObjectId()),
-					StyledString.DECORATIONS_STYLER);
-			styled.append(']', StyledString.DECORATIONS_STYLER);
-
-			styled.append(MessageFormat.format(
-					UIText.FetchResultTable_counterCommits,
-					Integer.valueOf(getChildren(this).length)),
-					StyledString.COUNTER_STYLER);
-		}
+		// private void addCommits(StyledString styled, String separator) {
+		// styled.append('[', StyledString.DECORATIONS_STYLER);
+		// styled.append(safeAbbreviate(update.getNewObjectId()),
+		// StyledString.DECORATIONS_STYLER);
+		// styled.append(separator, StyledString.DECORATIONS_STYLER);
+		// styled.append(safeAbbreviate(update.getOldObjectId()),
+		// StyledString.DECORATIONS_STYLER);
+		// styled.append(']', StyledString.DECORATIONS_STYLER);
+		//
+		// styled.append(MessageFormat.format(
+		// UIText.FetchResultTable_counterCommits,
+		// Integer.valueOf(getChildren(this).length)),
+		// StyledString.COUNTER_STYLER);
+		// }
 
 		@Override
 		public Object[] getChildren(Object object) {
@@ -145,8 +145,8 @@ class FetchResultTable {
 
 			switch (update.getResult()) {
 			case FORCED:
-				if (isPruned())
-					return NO_CHILDREN;
+				// if (isPruned())
+				// return NO_CHILDREN;
 				// else
 				//$FALL-THROUGH$
 			case FAST_FORWARD:
@@ -174,69 +174,68 @@ class FetchResultTable {
 		/**
 		 * Shorten ref name
 		 *
-		 * @param ref
-		 * @return shortened ref name
+		 * // * @param ref // * @return shortened ref name
 		 */
-		protected String shortenRef(final String ref) {
-			return NoteMap.shortenRefName(Repository.shortenRefName(ref));
-		}
+		// protected String shortenRef(final String ref) {
+		// return NoteMap.shortenRefName(Repository.shortenRefName(ref));
+		// }
 
-		@Override
-		public StyledString getStyledText(Object object) {
-			StyledString styled = new StyledString();
-			final String remote = update.getRemoteName();
-			final String local = update.getLocalName();
-			styled.append(shortenRef(remote));
-			styled.append(" : ", StyledString.QUALIFIER_STYLER); //$NON-NLS-1$
-			styled.append(shortenRef(local), StyledString.QUALIFIER_STYLER);
-			styled.append(' ');
-			switch (update.getResult()) {
-			case LOCK_FAILURE:
-				styled.append(UIText.FetchResultTable_statusLockFailure,
-						StyledString.DECORATIONS_STYLER);
-				break;
-			case IO_FAILURE:
-				styled.append(UIText.FetchResultTable_statusIOError,
-						StyledString.DECORATIONS_STYLER);
-				break;
-			case NEW:
-				if (remote.startsWith(Constants.R_HEADS))
-					styled.append(UIText.FetchResultTable_statusNewBranch,
-							StyledString.DECORATIONS_STYLER);
-				else if (local.startsWith(Constants.R_TAGS))
-					styled.append(UIText.FetchResultTable_statusNewTag,
-							StyledString.DECORATIONS_STYLER);
-				else
-					styled.append(UIText.FetchResultTable_statusNew,
-							StyledString.DECORATIONS_STYLER);
-				break;
-			case FORCED:
-				if (isPruned())
-					styled.append(UIText.FetchResultTable_statusPruned,
-							StyledString.DECORATIONS_STYLER);
-				else
-					addCommits(styled, "..."); //$NON-NLS-1$
-				break;
-			case FAST_FORWARD:
-				addCommits(styled, ".."); //$NON-NLS-1$
-				break;
-			case REJECTED:
-				styled.append(UIText.FetchResultTable_statusRejected,
-						StyledString.DECORATIONS_STYLER);
-				break;
-			case NO_CHANGE:
-				styled.append(UIText.FetchResultTable_statusUpToDate,
-						StyledString.DECORATIONS_STYLER);
-				break;
-			default:
-				break;
-			}
-			return styled;
-		}
+		// @Override
+		// public StyledString getStyledText(Object object) {
+		// StyledString styled = new StyledString();
+		// final String remote = update.getRemoteName();
+		// final String local = update.getLocalName();
+		// styled.append(shortenRef(remote));
+		// styled.append(" : ", StyledString.QUALIFIER_STYLER); //$NON-NLS-1$
+		// styled.append(shortenRef(local), StyledString.QUALIFIER_STYLER);
+		// styled.append(' ');
+		// switch (update.getResult()) {
+		// case LOCK_FAILURE:
+		// styled.append(UIText.FetchResultTable_statusLockFailure,
+		// StyledString.DECORATIONS_STYLER);
+		// break;
+		// case IO_FAILURE:
+		// styled.append(UIText.FetchResultTable_statusIOError,
+		// StyledString.DECORATIONS_STYLER);
+		// break;
+		// case NEW:
+		// if (remote.startsWith(Constants.R_HEADS))
+		// styled.append(UIText.FetchResultTable_statusNewBranch,
+		// StyledString.DECORATIONS_STYLER);
+		// else if (local.startsWith(Constants.R_TAGS))
+		// styled.append(UIText.FetchResultTable_statusNewTag,
+		// StyledString.DECORATIONS_STYLER);
+		// else
+		// styled.append(UIText.FetchResultTable_statusNew,
+		// StyledString.DECORATIONS_STYLER);
+		// break;
+		// case FORCED:
+		// if (isPruned())
+		// styled.append(UIText.FetchResultTable_statusPruned,
+		// StyledString.DECORATIONS_STYLER);
+		// else
+		// addCommits(styled, "..."); //$NON-NLS-1$
+		// break;
+		// case FAST_FORWARD:
+		// addCommits(styled, ".."); //$NON-NLS-1$
+		// break;
+		// case REJECTED:
+		// styled.append(UIText.FetchResultTable_statusRejected,
+		// StyledString.DECORATIONS_STYLER);
+		// break;
+		// case NO_CHANGE:
+		// styled.append(UIText.FetchResultTable_statusUpToDate,
+		// StyledString.DECORATIONS_STYLER);
+		// break;
+		// default:
+		// break;
+		// }
+		// return styled;
+		// }
 
-		private boolean isPruned() {
-			return update.getNewObjectId().equals(ObjectId.zeroId());
-		}
+		// private boolean isPruned() {
+		// return update.getNewObjectId().equals(ObjectId.zeroId());
+		// }
 	}
 
 	private final Composite treePanel;
@@ -247,7 +246,7 @@ class FetchResultTable {
 
 	private ObjectReader reader;
 
-	private Map<ObjectId, String> abbrevations;
+	// private Map<ObjectId, String> abbrevations;
 
 	FetchResultTable(final Composite parent) {
 		treePanel = new Composite(parent, SWT.NONE);
@@ -263,11 +262,11 @@ class FetchResultTable {
 			public StyledString getStyledText(Object element) {
 				// TODO Replace with use of IWorkbenchAdapter3 when is no longer
 				// supported
-				if (element instanceof FetchResultAdapter)
-					return ((FetchResultAdapter) element)
-							.getStyledText(element);
-				if (element instanceof RepositoryCommit)
-					return ((RepositoryCommit) element).getStyledText(element);
+				// if (element instanceof FetchResultAdapter)
+				// return ((FetchResultAdapter) element)
+				// .getStyledText(element);
+				// if (element instanceof RepositoryCommit)
+				// return ((RepositoryCommit) element).getStyledText(element);
 
 				return super.getStyledText(element);
 			}
@@ -410,22 +409,22 @@ class FetchResultTable {
 		treeViewer.setInput(null);
 		repo = db;
 		reader = db.newObjectReader();
-		abbrevations = new HashMap<>();
+		// abbrevations = new HashMap<>();
 		treeViewer.setInput(fetchResult);
 	}
 
-	private String safeAbbreviate(ObjectId id) {
-		String abbrev = abbrevations.get(id);
-		if (abbrev == null) {
-			try {
-				abbrev = reader.abbreviate(id).name();
-			} catch (IOException cannotAbbreviate) {
-				abbrev = id.name();
-			}
-			abbrevations.put(id, abbrev);
-		}
-		return abbrev;
-	}
+	// private String safeAbbreviate(ObjectId id) {
+	// String abbrev = abbrevations.get(id);
+	// if (abbrev == null) {
+	// try {
+	// abbrev = reader.abbreviate(id).name();
+	// } catch (IOException cannotAbbreviate) {
+	// abbrev = id.name();
+	// }
+	// abbrevations.put(id, abbrev);
+	// }
+	// return abbrev;
+	// }
 
 	Control getControl() {
 		return treePanel;

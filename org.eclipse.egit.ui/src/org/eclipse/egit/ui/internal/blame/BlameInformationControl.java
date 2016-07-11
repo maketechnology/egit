@@ -50,7 +50,7 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
@@ -90,7 +90,7 @@ public class BlameInformationControl extends AbstractInformationControl
 
 	private Label committerLabel;
 
-	private StyledText messageText;
+	// private StyledText messageText;
 
 	/**
 	 * 0-based line number
@@ -200,11 +200,11 @@ public class BlameInformationControl extends AbstractInformationControl
 		Label separator = new Label(displayArea, SWT.HORIZONTAL | SWT.SEPARATOR);
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(separator);
 
-		messageText = new StyledText(displayArea, SWT.NONE);
-		messageText.setForeground(parent.getForeground());
-		messageText.setBackground(parent.getBackground());
-		messageText.setEditable(false);
-		messageText.setFont(UIUtils
+//		messageText = new StyledText(displayArea, SWT.NONE);
+//		messageText.setForeground(parent.getForeground());
+//		messageText.setBackground(parent.getBackground());
+//		messageText.setEditable(false);
+//		messageText.setFont(UIUtils
 				.getFont(UIPreferences.THEME_CommitMessageFont));
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(messageText);
 	}

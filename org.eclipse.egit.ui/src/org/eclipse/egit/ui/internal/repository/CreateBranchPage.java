@@ -47,7 +47,7 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -118,7 +118,7 @@ class CreateBranchPage extends WizardPage {
 
 	private Label sourceIcon;
 
-	private StyledText sourceNameLabel;
+	// private StyledText sourceNameLabel;
 
 	private String sourceRefName = ""; //$NON-NLS-1$
 
@@ -189,12 +189,12 @@ class CreateBranchPage extends WizardPage {
 		sourceIcon.setLayoutData(GridDataFactory.fillDefaults()
 				.align(SWT.END, SWT.CENTER).create());
 
-		sourceNameLabel = new StyledText(main, SWT.NONE);
-		sourceNameLabel.setBackground(main.getBackground());
-		sourceNameLabel.setEditable(false);
-		sourceNameLabel.setLayoutData(GridDataFactory.fillDefaults()
-				.align(SWT.FILL, SWT.CENTER)
-				.grab(true, false).create());
+		// sourceNameLabel = new StyledText(main, SWT.NONE);
+		// sourceNameLabel.setBackground(main.getBackground());
+		// sourceNameLabel.setEditable(false);
+		// sourceNameLabel.setLayoutData(GridDataFactory.fillDefaults()
+		// .align(SWT.FILL, SWT.CENTER)
+		// .grab(true, false).create());
 
 		Button selectButton = new Button(main, SWT.NONE);
 		selectButton.setText(UIText.CreateBranchPage_SourceSelectButton);
@@ -289,8 +289,8 @@ class CreateBranchPage extends WizardPage {
 	}
 
 	private void setSourceRef(String refName) {
-		String shortName = Repository.shortenRefName(refName);
-		sourceNameLabel.setText(shortName);
+		// String shortName = Repository.shortenRefName(refName);
+		// sourceNameLabel.setText(shortName);
 		if (refName.startsWith(Constants.R_HEADS)
 				|| refName.startsWith(Constants.R_REMOTES))
 			sourceIcon.setImage(UIIcons.getImage(resourceManager,
@@ -309,7 +309,7 @@ class CreateBranchPage extends WizardPage {
 	}
 
 	private void setSourceCommit(RevCommit commit) {
-		sourceNameLabel.setText(commit.abbreviate(7).name());
+		// sourceNameLabel.setText(commit.abbreviate(7).name());
 		sourceIcon.setImage(UIIcons
 				.getImage(resourceManager, UIIcons.CHANGESET));
 

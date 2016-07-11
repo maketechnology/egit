@@ -79,7 +79,7 @@ public class GitScmUrlImportWizardPage extends WizardPage implements
 		public void update(ViewerCell cell) {
 			StyledString string = getStyledText(cell.getElement());
 			cell.setText(string.getString());
-			cell.setStyleRanges(string.getStyleRanges());
+			// cell.setStyleRanges(string.getStyleRanges());
 			cell.setImage(getImage(cell.getElement()));
 			super.update(cell);
 		}

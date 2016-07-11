@@ -127,7 +127,7 @@ import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StackLayout;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.DisposeEvent;
@@ -662,7 +662,7 @@ public class GitHistoryPage extends HistoryPage implements RefsChangedListener,
 	private GitHistoryPageActions actions;
 
 	/** An error text to be shown instead of the control */
-	private StyledText errorText;
+	// private StyledText errorText;
 
 	private final IPersistentPreferenceStore store = (IPersistentPreferenceStore) Activator
 			.getDefault().getPreferenceStore();
@@ -967,8 +967,10 @@ public class GitHistoryPage extends HistoryPage implements RefsChangedListener,
 		commentAndDiffScrolledComposite.addControlListener(new ControlAdapter() {
 			@Override
 			public void controlResized(ControlEvent e) {
-				if (!resizing && commentViewer.getTextWidget()
-						.getWordWrap()) {
+						if (!resizing /*
+										 * && commentViewer.getTextWidget()
+										 * .getWordWrap()
+										 */) {
 					resizeCommentAndDiffScrolledComposite();
 				}
 			}
@@ -1045,10 +1047,10 @@ public class GitHistoryPage extends HistoryPage implements RefsChangedListener,
 		final Composite c = new Composite(topControl, SWT.NULL);
 		layout.topControl = c;
 		// shown instead of the splitter if an error message was set
-		errorText = new StyledText(topControl, SWT.NONE);
+		// errorText = new StyledText(topControl, SWT.NONE);
 		// use the same font as in message viewer
-		errorText.setFont(UIUtils
-				.getFont(UIPreferences.THEME_CommitMessageFont));
+		// errorText.setFont(UIUtils
+		// .getFont(UIPreferences.THEME_CommitMessageFont));
 
 		final GridLayout parentLayout = new GridLayout();
 		parentLayout.marginHeight = 0;
@@ -1648,10 +1650,10 @@ public class GitHistoryPage extends HistoryPage implements RefsChangedListener,
 					return;
 				StackLayout layout = (StackLayout) topControl.getLayout();
 				if (message != null) {
-					errorText.setText(message);
-					layout.topControl = errorText;
+					// errorText.setText(message);
+					// layout.topControl = errorText;
 				} else {
-					errorText.setText(""); //$NON-NLS-1$
+					// errorText.setText(""); //$NON-NLS-1$
 					layout.topControl = historyControl;
 				}
 				topControl.layout();
@@ -2095,8 +2097,8 @@ public class GitHistoryPage extends HistoryPage implements RefsChangedListener,
 	}
 
 	private void setWrap(boolean wrap) {
-		commentViewer.getTextWidget().setWordWrap(wrap);
-		diffViewer.getTextWidget().setWordWrap(wrap);
+		// commentViewer.getTextWidget().setWordWrap(wrap);
+		// diffViewer.getTextWidget().setWordWrap(wrap);
 		resizeCommentAndDiffScrolledComposite();
 	}
 

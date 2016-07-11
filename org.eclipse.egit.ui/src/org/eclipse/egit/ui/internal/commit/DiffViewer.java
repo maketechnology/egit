@@ -36,10 +36,10 @@ import org.eclipse.jface.text.source.LineNumberRulerColumn;
 import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.swt.custom.LineBackgroundEvent;
-import org.eclipse.swt.custom.LineBackgroundListener;
-import org.eclipse.swt.custom.StyleRange;
-import org.eclipse.swt.custom.StyledText;
+//import org.eclipse.swt.custom.LineBackgroundEvent;
+//import org.eclipse.swt.custom.LineBackgroundListener;
+//import org.eclipse.swt.custom.StyleRange;
+//import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.graphics.Color;
@@ -181,7 +181,7 @@ public class DiffViewer extends SourceViewer {
 
 			@Override
 			public void lineGetBackground(LineBackgroundEvent event) {
-				StyledText text = getTextWidget();
+				// StyledText text = getTextWidget();
 				if (event.lineOffset < text.getCharCount()) {
 					StyleRange style = text
 							.getStyleRangeAtOffset(event.lineOffset);
@@ -223,12 +223,12 @@ public class DiffViewer extends SourceViewer {
 				.getBoolean(AbstractTextEditor.PREFERENCE_COLOR_SELECTION_BACKGROUND_SYSTEM_DEFAULT))
 			selectionBackground = getEditorColor(AbstractTextEditor.PREFERENCE_COLOR_SELECTION_BACKGROUND);
 
-		StyledText text = getTextWidget();
-		text.setForeground(foreground);
-		text.setBackground(background);
-		text.setSelectionForeground(selectionForeground);
-		text.setSelectionBackground(selectionBackground);
-		text.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
+		// StyledText text = getTextWidget();
+		// text.setForeground(foreground);
+		// text.setBackground(background);
+		// text.setSelectionForeground(selectionForeground);
+		// text.setSelectionBackground(selectionBackground);
+		// text.setFont(JFaceResources.getFont(JFaceResources.TEXT_FONT));
 		if (lineNumberRuler != null) {
 			lineNumberRuler.setFont(text.getFont());
 			lineNumberRuler.setForeground(foreground);
